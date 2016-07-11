@@ -42,25 +42,25 @@ class AuthController extends Controller
     public function __construct()
     {
         // $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-        $this->middleware('guest',['except'=>'getLogout']);
+        // $this->middleware('guest',['except'=>'getLogout']);
     }
 
     public function authenticate(Request $request){
         $credentials=$request->only('email','password');
          dd($credentials);
  
-        try{
-            if(!$token = JWTAuth::attempt($credentials)){
+        // try{
+        //     if(!$token = JWTAuth::attempt($credentials)){
 
-                return response(['error' => 'credentials not correct'], 401);
+        //         return response()->json(['error' => 'credentials not correct'], 401);
 
-            }
-        }
-        catch(JWTException $ex){
-            return response(['error' => 'email and password problem'], 401);
-        }
+        //     }
+        // }
+        // catch(JWTException $ex){
+        //     return response()->json(['error' => 'email and password problem'], 401);
+        // }
 
-        return response(compact('token'), 200);
+        // return response()->json(compact('token'), 200);
     }
     /**
      * Get a validator for an incoming registration request.
